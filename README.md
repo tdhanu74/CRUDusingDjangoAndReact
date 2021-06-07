@@ -6,9 +6,9 @@ Performing CRUD Operations using the **Django Framework** and **React**. The Dja
 ## Installation
 1. Download the Repository
 2. Create a database and user with the following details\
-    Schema_Name: 'djangodatabase'\
-    User: 'dbadmin'\
-    Password: '12345'\
+    *Schema_Name*: 'djangodatabase'\
+    *User*: 'dbadmin'\
+    *Password*: '12345'\
 Or change these details in the `backend/backend/settings.py` file
 3. Run the backend by using `python manage.py runserver` inside the backend folder
 4. Install the dependencies of frontend using `npm install` inside the frontend folder
