@@ -5,7 +5,7 @@ Performing CRUD Operations using the **Django Framework** and **React**. The Dja
 
 ## Installation
 1. Download the Repository
-2. Create a database and user with the following details\
+2. Create a database and user with the following details in your MySQL server\
     *Schema_Name*: 'djangodatabase'\
     *User*: 'dbadmin'\
     *Password*: '12345'\
