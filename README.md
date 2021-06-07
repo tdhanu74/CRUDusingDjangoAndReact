@@ -5,10 +5,10 @@ Performing CRUD Operations using the **Django Framework** and **React**. The Dja
 
 ## Installation
 1. Download the Repository
-2. Create a database and user with the following details
-    Schema_Name: 'djangodatabase',
-    User: 'dbadmin',
-    Password: '12345',
+2. Create a database and user with the following details\
+    Schema_Name: 'djangodatabase'\
+    User: 'dbadmin'\
+    Password: '12345'\
 Or change these details in the `backend/backend/settings.py` file
 3. Run the backend by using `python manage.py runserver` inside the backend folder
 4. Install the dependencies of frontend using `npm install` inside the frontend folder
@@ -20,13 +20,13 @@ The main page consists of an `Add Data` Button and List of Data that has been al
 
 ## Inserting Data
 To insert data, click on the `Add Data` button and fill the required data in the Modal and click on Save
-![Inserting Data](/images/Insert_Modal.png)
+![Inserting Data](/images/Insert_Modal.png)\
 ![Data Inserted](/images/Inserted.png)
 
 ## Editing Data
 To edit data, click on `Edit` Button next to the data to be edited, change the required data and click on Save
 
-![Editing Data](/images/Edit_Modal.png)
+![Editing Data](/images/Edit_Modal.png)\
 ![Data Edited](/images/Edited.png)
 
 ## Deleting Data 
