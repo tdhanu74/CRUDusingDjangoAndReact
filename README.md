@@ -10,9 +10,12 @@ Performing CRUD Operations using the **Django Framework** and **React**. The Dja
     *User*: 'dbadmin'\
     *Password*: '12345'\
 Or change these details in the `backend/backend/settings.py` file
-3. Run the backend by using `python manage.py runserver` inside the backend folder
-4. Install the dependencies of frontend using `npm install` inside the frontend folder
-5. Run the frontend using `npm start` inside the frontend folder
+3. Run `pipenv shell` inside the backend folder
+4. Run `pipenv install django djangorestframework django-cors-headers mysqlclient` in pipenv shell
+5. Create a superuser for yourself using `python manage.py createsupersuer`
+6. Run the backend by using `python manage.py runserver` 
+7. Install the dependencies of frontend using `npm install` inside the frontend folder
+8. Run the frontend using `npm start` inside the frontend folder
 
 ## Main Page
 The main page consists of an `Add Data` Button and List of Data that has been already stored on the database
