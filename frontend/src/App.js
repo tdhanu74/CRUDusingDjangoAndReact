@@ -1,13 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import CustomModal from "./component/Modal";
 import axios from "axios";
 
 class App extends Component{
+
   constructor(props){
     super(props);
     this.state = {
+      count: 0,
       listing: [],    //List of Items
       modal: false,   //To check whether to display modal or not
       activeItem: {   //Selected Item
@@ -18,13 +20,22 @@ class App extends Component{
   }
 
   componentDidMount(){  //Runs after the component is mounted
-    this.refreshList();
+    setInterval(() => {
+      this.setState({count: this.state.count + 1});
+      this.refreshList();
+    }, 2000);
+  }
+
+  addData = (data) => {
+    this.setState({ listing: [...this.state.listing, data] })
   }
 
   refreshList = () => { //Retrieves the data from the backend
     axios
       .get("/api/list1/")
-      .then((res) => this.setState({ listing: res.data }))
+      .then((res) => {
+        this.setState({ listing: res.data.slice(0,this.state.count) })
+      })
       .catch((err) => console.log(err));
   };
 
@@ -38,12 +49,10 @@ class App extends Component{
     if (item.auto_increment_id) { //Updates
       axios
         .put(`/api/list1/${item.auto_increment_id}/`, item)
-        .then((res) => this.refreshList());
       return;
     }
     axios //Inserts
       .post("/api/list1/", item)
-      .then((res) => this.refreshList());
   };
 
   handleDelete = (item) => {  //Deletes selected Item
@@ -64,7 +73,7 @@ class App extends Component{
 
   renderItems = () => { //Maps the list of items to list to be displayed
     const newItems = this.state.listing;
-
+    
     return newItems.map((item) => (
       <li
         key={item.id}
