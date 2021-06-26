@@ -10,6 +10,7 @@ class App extends Component{
     super(props);
     this.state = {
       count: 0,
+      single: false,
       listing: [],    //List of Items
       modal: false,   //To check whether to display modal or not
       activeItem: {   //Selected Item
@@ -31,12 +32,24 @@ class App extends Component{
   }
 
   refreshList = () => { //Retrieves the data from the backend
-    axios
+    if (this.state.single)
+    {
+      axios
+      .get("/api/list1/")
+      .then((res) => {
+        this.setState({ listing: [res.data[this.state.count % res.data.length]] })
+      })
+      .catch((err) => console.log(err));
+    }
+    else
+    {
+      axios
       .get("/api/list1/")
       .then((res) => {
         this.setState({ listing: res.data.slice(0,this.state.count) })
       })
       .catch((err) => console.log(err));
+    }
   };
 
   toggle = () => {
@@ -61,6 +74,11 @@ class App extends Component{
       .then((res) => this.refreshList());
   };
 
+  toggleDisplay = () => {
+    this.setState({ single: !this.state.single })
+    this.setState({ count: -1 })
+  };
+
   createItem = () => {  //Creates item that is to be inserted
     const item = { timestamp: "", data: "" };
 
@@ -79,6 +97,12 @@ class App extends Component{
         key={item.id}
         className="list-group-item d-flex justify-content-between align-items-center"
       >
+        <span
+          className={`todo-title mr-2`}
+          title={item.auto_increment_id}
+        >
+          {item.auto_increment_id}
+        </span>
         <span
           className={`todo-title mr-2`}
           title={item.data}
@@ -116,6 +140,12 @@ class App extends Component{
                   onClick={this.createItem}
                 >
                   Add Data
+                </button>
+                <button
+                  className="btn btn-primary ml-2"
+                  onClick={this.toggleDisplay}
+                >
+                  Toggle view
                 </button>
               </div>
               <ul className="list-group list-group-flush border-top-0">
